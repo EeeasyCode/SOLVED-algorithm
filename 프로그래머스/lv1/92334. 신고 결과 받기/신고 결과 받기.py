@@ -2,20 +2,20 @@ from collections import defaultdict
 
 def solution(id_list, report,k):
     answer = []
-    report = list(set(report))
-    user = defaultdict(set)
-    cnt = defaultdict(int)
+    setReport = list(set(report))
+    singo = defaultdict(set)
+    card = defaultdict(int)
 	
-    for r in report:
-        a,b = r.split()
-        user[a].add(b)
-        cnt[b] += 1
+    for i in setReport:
+        a,b = i.split()
+        singo[a].add(b)
+        card[b] += 1
     
     for i in id_list:
-        result = 0
+        cnt = 0
         
-        for u in user[i]:
-            if cnt[u]>=k:
-                result +=1
-        answer.append(result)
+        for u in singo[i]:
+            if card[u]>=k:
+                cnt +=1
+        answer.append(cnt)
     return answer
