@@ -1,10 +1,11 @@
-n= int(input())
+n = int(input())
 
-memo_arr = []
-memo_arr.append(0)
-memo_arr.append(1)
+dp = [0] * (n+1)
+dp[0], dp[1] = 0, 1
 
-for i in range(2, n+1):
-    memo_arr.append(memo_arr[i-1] + memo_arr[i-2])
+for i in range(2, n):
+  dp[i] = dp[i-1] + dp[i-2]
 
-print(memo_arr[n])
+answer = dp[n-1] + dp[n-2] 
+
+print(answer)
