@@ -1,20 +1,22 @@
 def solution(participant, completion):
-    answer = {}
+    dict = {}
     
-    for part in participant: 
-        if part in answer:
-            answer[part] += 1
-        else:
-            answer[part] = 1
-        
-    for comp in completion:
-        answer[comp] -= 1
+    for p in participant:
+        if p in dict:
+            dict[p] += 1
+        else: 
+            dict[p] = 1
     
-    for k, v in answer.items():
-        if v == 1:
+    for c in completion:
+        if c in dict.keys():
+            dict[c] -= 1
+    
+    for k, v in dict.items():
+        if v != 0:
             return k
+
     
-    return 1
+    return dict
             
     
     
