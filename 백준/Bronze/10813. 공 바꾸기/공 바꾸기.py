@@ -1,12 +1,13 @@
-n, m = map(int, input().split())
+N, M = map(int, input().split())
 
-arr = [0] * n
-for i in range(n):
-  arr[i] = i+1
+answer_arr = [0] * N
 
-for _ in range(m):
-  a, b = map(int, input().split())
-  arr[a-1], arr[b-1] = arr[b-1], arr[a-1]
+for i in range(1, N+1):
+    answer_arr[i-1] = i
 
-for i in arr:
-  print(i, end=' ')
+for _ in range(M):
+    i, j = map(int, input().split())
+    answer_arr[i-1], answer_arr[j-1] = answer_arr[j-1], answer_arr[i-1]
+
+for answer in answer_arr:
+    print(answer, end=' ')
