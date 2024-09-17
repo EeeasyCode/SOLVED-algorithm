@@ -1,31 +1,22 @@
-total_count = 0
-total = 0
-while True:
-  try :
-    _, a, b = input().split()
-    total_count += float(a)
-    if b == 'A+':
-      total += 4.5 * float(a)
-    elif b == 'A0':
-      total += 4.0 * float(a)
-    elif b == 'B+':
-      total += 3.5 * float(a)
-    elif b == 'B0':
-      total += 3.0 * float(a)
-    elif b == 'C+':
-      total += 2.5 * float(a)
-    elif b == 'C0':
-      total += 2.0 * float(a)
-    elif b == 'D+':
-      total += 1.5 * float(a)
-    elif b == 'D0':
-      total += 1.0 * float(a)
-    elif b == 'P':
-      total_count -= float(a)
-    else:
-      total += 0 * float(a)
-    
-  except EOFError:
-    break
+core_credit_dict = {
+    "A+": 4.5,
+    "A0": 4.0,
+    "B+": 3.5,
+    "B0": 3.0,
+    "C+": 2.5,
+    "C0": 2.0,
+    "D+": 1.5,
+    "D0": 1.0,
+    "F": 0.0
+}
 
-print(round(total/total_count, 6))
+total_grade, total_credit = 0, 0
+
+for _ in range(20):
+    _, credit, grade = input().split()
+    if grade == "P":
+        continue
+    total_credit += core_credit_dict[grade] * float(credit)
+    total_grade += float(credit)
+
+print(total_credit / total_grade)
