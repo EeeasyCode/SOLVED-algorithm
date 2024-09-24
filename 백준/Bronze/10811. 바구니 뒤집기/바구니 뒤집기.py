@@ -5,5 +5,6 @@ for _ in range(M):
     i, j = map(int, input().split())
     arr[i-1:j] = arr[i-1:j][::-1]
 
-print(" ".join(map(str, arr)))
+for num in arr:
+    print(num, end=' ')
    
