@@ -1,13 +1,9 @@
-n, m = map(int, input().split())
+N, M = map(int, input().split())
+arr = [i for i in range(1, N+1)]
 
-arr = [0] * n
+for _ in range(M):
+    i, j = map(int, input().split())
+    arr[i-1:j] = arr[i-1:j][::-1]
 
-for i in range(n):
-  arr[i] = i+1
-
-for _ in range(m):
-  a, b = map(int, input().split())
-  arr[a-1:b] = arr[a-1:b][::-1]
-  
-for i in arr:
-  print(i, end=' ')
+print(" ".join(map(str, arr)))
+   
