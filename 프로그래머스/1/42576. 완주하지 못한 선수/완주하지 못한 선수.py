@@ -1,23 +1,18 @@
 def solution(participant, completion):
-    dict = {}
+    answer = ''
+    part_dict = dict()
+    for part in participant:
+        if part in part_dict.keys():
+            part_dict[part] += 1
+        else:
+            part_dict[part] = 1
     
-    for p in participant:
-        if p in dict:
-            dict[p] += 1
-        else: 
-            dict[p] = 1
-    
-    for c in completion:
-        if c in dict.keys():
-            dict[c] -= 1
-    
-    for k, v in dict.items():
-        if v != 0:
-            return k
-
-    
-    return dict
+    for com in completion:
+        if part_dict[com]:
+            part_dict[com] -= 1
             
+    for k, v in part_dict.items():
+        if v != 0:
+            answer = k
     
-    
-    
+    return answer
