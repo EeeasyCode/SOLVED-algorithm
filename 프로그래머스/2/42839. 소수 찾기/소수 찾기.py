@@ -1,25 +1,23 @@
 import itertools
-def is_prime(x):
-    if x < 2:
+def is_prime(num):
+    if num < 2:
         return False
     
-    for i in range(2, x):
-        if x % i == 0:
+    for i in range(2, num):
+        if num % i == 0:
             return False
     return True
+        
 def solution(numbers):
     answer = 0
-    if numbers == '0' or numbers == '1':
-        return 0
-    int_arr = [num for num in numbers]
-    num_arr = []
-    for i in range(1, len(int_arr)+1):
-        num_arr.append(list(set(map(''.join ,itertools.permutations(int_arr, i)))))
+    number_list = list(map(int, numbers))
+    permu_list = []
+    for i in range(1, len(numbers)+1):
+        permu_list.append(list(map(''.join, (itertools.permutations(numbers, i)))))
+    permu_list = list(set(map(int, sum(permu_list, []))))
     
-    num_arr = list(set(map(int, sum(num_arr, []))))
-    
-    for num in num_arr:
+    for num in permu_list:
         if is_prime(num):
             answer += 1
-            
+    
     return answer
