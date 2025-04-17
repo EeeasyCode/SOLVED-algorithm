@@ -1,13 +1,17 @@
-n = int(input())
-answer = n
+N = int(input())
+answer = 0
 
-for _ in range(n):
-    word = input()
-    for i in range(len(word)-1):
-        if word[i] == word[i+1]:
-            continue
-        elif word[i] in word[i+1:]:
-            answer -= 1
-            break
-                
+def check_group_word(str_arr):
+  char_list = {}
+  for idx, c in enumerate(str_arr):
+    if c in char_list:
+      if char_list[c] != idx - 1:
+        return 0
+    char_list[c] = idx
+  return 1
+
+for _ in range(N):
+  str_arr = input()
+  answer += check_group_word(str_arr)
+
 print(answer)
