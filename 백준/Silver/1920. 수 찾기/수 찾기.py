@@ -1,14 +1,17 @@
-from collections import Counter
+from bisect import *
 
-n = int(input())
-arr1 = map(int, input().split())
-arr1 = Counter(arr1)
+def bs(A, find_num):
+  existIdx = bisect_left(A, find_num)
 
-m = int(input())
-arr2 = map(int, input().split())
+  if (existIdx < len(A) and A[existIdx] == find_num): return 1
+  else: return 0
+  
 
-for num in arr2:
-    if num in arr1:
-        print('1')
-    else:
-        print('0')
+N = int(input())
+A = list(map(int, input().split()))
+A.sort()
+M = int(input())
+findNumArr = list(map(int, input().split()))
+
+for find_num in findNumArr:
+  print(bs(A, find_num))
