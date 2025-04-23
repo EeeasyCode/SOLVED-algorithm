@@ -1,10 +1,15 @@
-n = int(input())
-d=[]
-def fibo(n):
-    d.append(0)
-    d.append(1)
-    for i in range(2, n+1):
-        d.append(d[i-1] + d[i-2])
-    return d[-1]    
+import sys
 
-print(fibo(n))
+input = sys.stdin.readline
+N = int(input())
+mem = [-1] * (N+1)
+
+def fibo(n):
+  if n == 0: return 0
+  if n == 1: return 1
+  if mem[n] != -1: return mem[n]
+  
+  mem[n] = fibo(n-1) + fibo(n-2)
+  return mem[n]
+
+print(fibo(N))
